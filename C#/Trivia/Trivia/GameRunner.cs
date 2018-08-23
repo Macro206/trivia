@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 using UglyTrivia;
 
@@ -9,36 +7,31 @@ namespace Trivia
 {
     public class GameRunner
     {
-
-        private static bool notAWinner;
-
         public static void Main(String[] args)
         {
             Game aGame = new Game();
 
-            aGame.add("Chet");
-            aGame.add("Pat");
-            aGame.add("Sue");
+            aGame.AddPlayer("Chet");
+            aGame.AddPlayer("Pat");
+            aGame.AddPlayer("Sue");
 
             Random rand = args.Any() ? new Random(args.First().GetHashCode()) : new Random();
 
+            bool currentPlayerIsNotWinner;
+
             do
             {
-
-                aGame.roll(rand.Next(5) + 1);
+                aGame.OnDiceRolled(rand.Next(5) + 1);
 
                 if (rand.Next(9) == 7)
                 {
-                    notAWinner = aGame.wrongAnswer();
+                    currentPlayerIsNotWinner = aGame.IncorrectlyAnswered();
                 }
                 else
                 {
-                    notAWinner = aGame.wasCorrectlyAnswered();
+                    currentPlayerIsNotWinner = aGame.CorrectlyAnswered();
                 }
-
-
-
-            } while (notAWinner);
+            } while (currentPlayerIsNotWinner);
 
         }
 

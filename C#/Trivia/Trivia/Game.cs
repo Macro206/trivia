@@ -152,7 +152,7 @@ namespace UglyTrivia
             {
                 if (isGettingOutOfPenaltyBox)
                 {
-                    Console.WriteLine("Answer was corrent!!!!");
+                    Console.WriteLine("Answer was correct!!!!");
                     purses[currentPlayer]++;
                     Console.WriteLine(players[currentPlayer]
                             + " now has "

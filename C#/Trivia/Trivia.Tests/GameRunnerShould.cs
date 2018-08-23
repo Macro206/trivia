@@ -22,9 +22,9 @@ namespace Trivia.Tests
         [Test]
         public void Run_until_there_is_a_winner()
         {
-            GameRunner.Main(new string[] {});
+            GameRunner.Main(new[] {"corrent"});
 
-            var expectedOutput = "";  // TODO: Work out what this is
+            var expectedOutput = File.ReadAllText(@"C:\Users\matteo.pozzi\Documents\GitHub\trivia\C#\Trivia\Trivia.Tests\trivia.txt");
             Assert.That(_output.ToString(), Is.EqualTo(expectedOutput));
         }
     }

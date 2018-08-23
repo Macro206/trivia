@@ -31,6 +31,7 @@ namespace Trivia
                 {
                     currentPlayerIsNotWinner = aGame.CorrectlyAnswered();
                 }
+
             } while (currentPlayerIsNotWinner);
 
         }

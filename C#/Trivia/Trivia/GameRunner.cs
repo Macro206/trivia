@@ -17,22 +17,17 @@ namespace Trivia
 
             Random rand = args.Any() ? new Random(args.First().GetHashCode()) : new Random();
 
-            bool currentPlayerIsNotWinner;
+            bool currentPlayerHasWon;
 
             do
             {
                 aGame.OnDiceRolled(rand.Next(5) + 1);
 
-                if (rand.Next(9) == 7)
-                {
-                    currentPlayerIsNotWinner = aGame.IncorrectlyAnswered();
-                }
-                else
-                {
-                    currentPlayerIsNotWinner = aGame.CorrectlyAnswered();
-                }
 
-            } while (currentPlayerIsNotWinner);
+                var wasAnswerCorrect = rand.Next(9) != 7;
+                currentPlayerHasWon = wasAnswerCorrect ? aGame.CorrectlyAnswered() : aGame.IncorrectlyAnswered();
+
+            } while (!currentPlayerHasWon);
 
         }
 
